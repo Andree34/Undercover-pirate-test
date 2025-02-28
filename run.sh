@@ -12,7 +12,7 @@ g++ -o checker E-Checker.cpp
 g++ -o solution ../Undercover\ pirate.cpp
 
 if [ $? -ne 0 ]; then
-    echo "Solution doesn't compile"
+    echo "Compilation error"
     exit 1
 fi
 
@@ -22,15 +22,13 @@ timeout 2s bash -c '
 '
 
 if [ $? -eq 124 ]; then
-    echo "Timeout on samples"
+    echo "Time Limit Exceeded"
     exit 1
 fi
 
-if diff -q E-sample.out E-sample-correct.out >/dev/null; then
-    echo "Sample tests passed!"
-else
-    echo "Sample tests failed :("
-    diff E-sample.out E-sample-correct.out
+if ! diff -q E-sample.out E-sample-correct.out >/dev/null; then
+    echo "Wrong Answer"
+    # diff E-sample.out E-sample-correct.out
     exit 0
 fi
 
@@ -43,13 +41,14 @@ timeout 2s bash -c '
 '
 
 if [ $? -eq 124 ]; then
-    echo "Timeout on tests"
+    echo "Time Limit Exceeded"
     exit 1
 fi
 
-if diff -q E.out E-correct.out >/dev/null; then
-    echo "Tests passed!"
-else
-    echo "Tests failed :("
-    diff E.out E-correct.out
+if ! diff -q E.out E-correct.out >/dev/null; then
+    echo "Wrong Answer"
+    # diff E.out E-correct.out
+    exit 0
 fi
+
+echo "Accepted"

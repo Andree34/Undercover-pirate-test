@@ -75,7 +75,7 @@ bool talk()
 
 	do {
 		if (counter > maxCounter) {
-			fprintf(out,"Exceeded number of queries: %d\n",maxCounter);
+			// fprintf(out,"Exceeded number of queries: %d\n",maxCounter);
 			return false;
 		}
 		fgets(line,255,stdin);
@@ -90,7 +90,7 @@ bool talk()
 			// split sides
 			vector<string> sides = split(Q, '+');
 			if (sides.size() != 2) {
-				fprintf(out,"invalid query '%s'\n",line);
+				// fprintf(out,"invalid query '%s'\n",line);
 				return false;
 			}
 
@@ -102,7 +102,7 @@ bool talk()
 			while (rSide.begin()->empty()) rSide.erase(rSide.begin());
 			while (rSide.back().empty()) rSide.erase(--rSide.end());
 			if (lSide.size() > 4 || rSide.size() > 4) {
-				fprintf(out,"invalid query '%s'\n",line);
+				// fprintf(out,"invalid query '%s'\n",line);
 				return false;
 			}
 
@@ -113,13 +113,13 @@ bool talk()
 			int cR = rSide.size();
 			for (int i = 0; i < cL; i++) {
 				if (!makeRange(lSide[i], L[i])) {
-					fprintf(out,"invalid query '%s'\n",line);
+					// fprintf(out,"invalid query '%s'\n",line);
 					return false;
 				}
 			}
 			for (int i = 0; i < cR; i++) {
 				if (!makeRange(rSide[i], R[i])) {
-					fprintf(out,"invalid query '%s'\n",line);
+					// fprintf(out,"invalid query '%s'\n",line);
 					return false;
 				}
 			}
@@ -128,7 +128,7 @@ bool talk()
 			for (int i = 0; i < cL; i++) {
 				for (int j = i+1; j < cL; j++) {
 					if (!disjointRange(L[i], L[j])) {
-						fprintf(out,"invalid query '%s'\n",line);
+						// fprintf(out,"invalid query '%s'\n",line);
 						return false;
 					}
 				}
@@ -136,7 +136,7 @@ bool talk()
 			for (int i = 0; i < cR; i++) {
 				for (int j = i+1; j < cR; j++) {
 					if (!disjointRange(R[i], R[j])) {
-						fprintf(out,"invalid query '%s'\n",line);
+						// fprintf(out,"invalid query '%s'\n",line);
 						return false;
 					}
 				}
@@ -144,7 +144,7 @@ bool talk()
 			for (int i = 0; i < cL; i++) {
 				for (int j = 0; j < cR; j++) {
 					if (!disjointRange(L[i], R[j])) {
-						fprintf(out,"invalid query '%s'\n",line);
+						// fprintf(out,"invalid query '%s'\n",line);
 						return false;
 					}
 				}
