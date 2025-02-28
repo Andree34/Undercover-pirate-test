@@ -220,6 +220,6 @@ int main(int argc, char *argv[])
 	/* Copy any additional data from program */
 	//while ( (nbuf=fread(buf,1,256,stdin))>0 ) fwrite(buf,1,nbuf,out);
 
-	fprintf(stderr,"jury program exited successfully\n");
+	// fprintf(stderr,"jury program exited successfully\n");
 	return 0;
 }
