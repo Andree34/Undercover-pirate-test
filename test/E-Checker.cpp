@@ -71,7 +71,7 @@ bool talk()
 	}
 
 
-	printf("%ld\n",N); fflush(stdout);
+	printf("%d\n",N); fflush(stdout);
 
 	do {
 		if (counter > maxCounter) {
@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
 	fflush(stdout);
 
 	for(run=1; run<=nruns; run++) {
-		fscanf(in,"%ld %ld\n",&N,&P);
+		fscanf(in,"%d %d\n",&N,&P);
 		if (P < 0) {
 			heavier = false; P = -P;
 		}

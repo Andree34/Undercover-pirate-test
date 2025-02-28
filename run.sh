@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# feel free to keep some files to debug
+cleanup() {
+    rm pipe1 pipe2 E-sample.out E.out checker solution
+}
+trap cleanup EXIT
+
 g++ -o test/checker test/E-Checker.cpp
 g++ -o test/solution Undercover\ pirate.cpp
 
@@ -14,6 +20,7 @@ if diff -q E-sample.out E-sample-correct.out >/dev/null; then
 else
     echo "Sample tests failed :("
     diff E-sample.out E-sample-correct.out
+    exit
 fi
 
 > pipe1
@@ -28,6 +35,3 @@ else
     echo "Tests failed :("
     diff E.out E-correct.out
 fi
-
-# feel free to keep some files to debug
-rm pipe1 pipe2 E-sample.out E.out checker solution
